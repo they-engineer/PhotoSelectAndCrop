@@ -16,18 +16,18 @@ extension ImageMoveAndScaleSheet {
     /// Loads an image selected by the user from an ImagePicker with access to the user's photo library.
     ///
     /// First, we want to measure the image top imput and determine its aspect ratio.
-    func loadImage() {
+    func loadImage(proxy: GeometryProxy) {
         guard let inputImage = inputImage else { return }
         let w = inputImage.size.width
         let h = inputImage.size.height
         viewModel.originalImage = inputImage
         inputImageAspectRatio = w / h
-        resetImageOriginAndScale()
+        resetImageOriginAndScale(proxy: proxy)
     }
     
     
     ///Loads the current image when the view appears.
-    func setCurrentImage() {
+    func setCurrentImage(proxy: GeometryProxy) {
         guard let currentImage = viewModel.originalImage else { return }
         let w = currentImage.size.width
         let h = currentImage.size.height
@@ -37,7 +37,7 @@ extension ImageMoveAndScaleSheet {
         newPosition = imageAttributes.position
         zoomAmount = imageAttributes.scale
         viewModel.originalImage = currentImage
-        repositionImage()
+        repositionImage(proxy: proxy)
     }
         
     ///A CGFloat used to determine the aspect ratio of the device screen
@@ -48,23 +48,23 @@ extension ImageMoveAndScaleSheet {
     ///the screen to size it appropriately.
     ///Double-tapping the image will also set it
     ///as it was sized originally upon loading.
-    private func getAspect() -> CGFloat {
-        let screenAspectRatio = UIScreen.main.bounds.width / UIScreen.main.bounds.height
+    private func getAspect(proxy: GeometryProxy) -> CGFloat {
+        let screenAspectRatio = proxy.size.width / proxy.size.height
         return screenAspectRatio
     }
     
     
     ///Positions the image selected to fit the screen.
-    func resetImageOriginAndScale() {
+    func resetImageOriginAndScale(proxy: GeometryProxy) {
         print("reposition")
-        let screenAspect: CGFloat = getAspect()
+        let screenAspect: CGFloat = getAspect(proxy: proxy)
 
         withAnimation(.easeInOut){
             if inputImageAspectRatio >= screenAspect {
-                displayW = UIScreen.main.bounds.width
+                displayW = proxy.size.width
                 displayH = displayW / inputImageAspectRatio
             } else {
-                displayH = UIScreen.main.bounds.height
+                displayH = proxy.size.height
                 displayW = displayH * inputImageAspectRatio
             }
             currentAmount = 0
@@ -75,19 +75,18 @@ extension ImageMoveAndScaleSheet {
     }
     
     /// - Tag: repositionImage
-    func repositionImage() {
-        
+    func repositionImage(proxy: GeometryProxy) {
         ///Setting the display width and height so the imputImage fits the screen
         ///orientation.
-        let screenAspect: CGFloat = getAspect()
-        let diameter = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height)
+        let screenAspect: CGFloat = getAspect(proxy: proxy)
+        let diameter = min(proxy.size.width, proxy.size.height)
         
         if screenAspect <= 1.0 {
             if inputImageAspectRatio > screenAspect {
                 displayW = diameter * zoomAmount
                 displayH = displayW / inputImageAspectRatio
             } else {
-                displayH = UIScreen.main.bounds.height * zoomAmount
+                displayH = proxy.size.height * zoomAmount
                 displayW = displayH * inputImageAspectRatio
             }
         } else {
@@ -95,7 +94,7 @@ extension ImageMoveAndScaleSheet {
                 displayH = diameter * zoomAmount
                 displayW = displayH * inputImageAspectRatio
             } else {
-                displayW = UIScreen.main.bounds.width * zoomAmount
+                displayW = proxy.size.width * zoomAmount
                 displayH = displayW / inputImageAspectRatio
             }
         }
@@ -163,7 +162,7 @@ extension ImageMoveAndScaleSheet {
         ///If "processImage()" is run in this state, there is a fatal error. of a nil UIImage.
         ///
         if displayW < diameter - inset && displayH < diameter - inset {
-            resetImageOriginAndScale()
+            resetImageOriginAndScale(proxy: proxy)
         }
     }
     
@@ -173,10 +172,10 @@ extension ImageMoveAndScaleSheet {
     /// - Note: But if the user saves the image in one mode and them opens it in another, the
     ///scale and size will be slightly off.
     ///
-    func composeImageAttributes() {
+    func composeImageAttributes(proxy: GeometryProxy) {
         
         let scale = (inputImage?.size.width)! / displayW
-        let originAdjustment = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height)
+        let originAdjustment = min(proxy.size.width, proxy.size.height)
         let diameter = ( originAdjustment - inset * 2 ) * scale
         
         let xPos = ( ( ( displayW - originAdjustment ) / 2 ) + inset + ( currentPosition.width * -1 ) ) * scale
