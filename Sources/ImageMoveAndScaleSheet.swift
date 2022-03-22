@@ -191,12 +191,14 @@ struct ImageMoveAndScaleSheet: View {
                 ///Uncomment these two lines to use the PHPicker.
                 //            SystemPHPicker(image: self.$inputImage)
                 //                .accentColor(Color.systemRed)
+                //                .ignoresSafeArea(.keyboard)
                 
                 ///Uncomment the two lines below to use the old UIIMagePicker
                 ///This picker also results in some leaks, but as far as we can tell
                 ///far fewer than the PHPicker.
                 SystemUIImagePicker(image: self.$inputImage)
                     .accentColor(Color.systemRed)
+                    .ignoresSafeArea(.keyboard)
             }
             .onAppear {
                 //    screenWidth = geometry.size.width
