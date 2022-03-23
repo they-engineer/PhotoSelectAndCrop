@@ -103,6 +103,12 @@ struct ImageMoveAndScaleSheet: View {
                     .fill(Color.black).opacity(0.55)
                     .mask(HoleShapeMask(proxy: geometry).fill(style: FillStyle(eoFill: true)))
                     .edgesIgnoringSafeArea(.all)
+                    .onTapGesture {
+                        // users were confused with the green gallery button
+                        if viewModel.originalImage == nil {
+                            isShowingImagePicker = true
+                        }
+                    }
                 
                 VStack {
                     Text((viewModel.originalImage != nil) ? viewModel.moveAndScale : viewModel.selectPhoto )
@@ -201,9 +207,7 @@ struct ImageMoveAndScaleSheet: View {
                     .ignoresSafeArea(.keyboard)
             }
             .onAppear {
-                //    screenWidth = geometry.size.width
-                //    screenHeight = geometry.size.height
-                defaultImageSide = (screenWidth - (30)) * CGFloat(2).squareRoot() / 2
+                defaultImageSide = (screenWidth - (inset * 2)) * CGFloat(2).squareRoot() / 2
                 setCurrentImage(proxy: geometry)
             }
         }
