@@ -67,7 +67,7 @@ struct ImageMoveAndScaleSheet: View {
     
     //Localized strings
     let moveAndScale = NSLocalizedString("Move and Scale", comment: "indicate that the user may use gestures to move and or scale the image")
-    let selectPhoto = NSLocalizedString("Select a photo by tapping the icon below", comment: "indicate that the user may select a photo by tapping on the green icon")
+    let selectPhoto = NSLocalizedString("Select a photo by tapping the green icon below", comment: "indicate that the user may select a photo by tapping on the green icon")
     let cancelSheet = NSLocalizedString("Cancel", comment: "indicate that the user cancel the action, closing the sheet")
     let usePhoto = NSLocalizedString("Use photo", comment: "indicate that the user may use the photo as currently displayed")
     
@@ -103,12 +103,6 @@ struct ImageMoveAndScaleSheet: View {
                     .fill(Color.black).opacity(0.55)
                     .mask(HoleShapeMask(proxy: geometry).fill(style: FillStyle(eoFill: true)))
                     //.edgesIgnoringSafeArea(.all)
-                    .onTapGesture {
-                        // users were confused with the green gallery button
-                        if viewModel.originalImage == nil {
-                            isShowingImagePicker = true
-                        }
-                    }
                 
                 VStack {
                     Text((viewModel.originalImage != nil) ? viewModel.moveAndScale : viewModel.selectPhoto )
@@ -233,7 +227,7 @@ struct ImageMoveAndScaleSheet: View {
     private var cancelButton: some View {
         Button(
             action: {presentationMode.wrappedValue.dismiss()},
-            label: { Text( cancelSheet) })
+            label: { Text(cancelSheet) })
     }
     
     private var openSystemPickerButton: some View {
