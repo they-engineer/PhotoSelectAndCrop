@@ -58,7 +58,7 @@ struct ImageMoveAndScaleSheet: View {
     //Local variables
     
     ///A CGFloat used to "pad" the circle set into the view.
-    let inset: CGFloat = 15
+    let inset: CGFloat = 0
     
     ///find the length of the side of a square which will fit inside
     ///the Circle() shape of our mask to be sure all SF Symbol images fit inside.
@@ -102,7 +102,7 @@ struct ImageMoveAndScaleSheet: View {
                 Rectangle()
                     .fill(Color.black).opacity(0.55)
                     .mask(HoleShapeMask(proxy: geometry).fill(style: FillStyle(eoFill: true)))
-                    .edgesIgnoringSafeArea(.all)
+                    //.edgesIgnoringSafeArea(.all)
                     .onTapGesture {
                         // users were confused with the green gallery button
                         if viewModel.originalImage == nil {
@@ -146,6 +146,7 @@ struct ImageMoveAndScaleSheet: View {
                 }
                 .padding(.bottom, (orientation.orientation == .portrait) ? 20 : 4)
             }
+            .background(Color.black)
             //.edgesIgnoringSafeArea(.all)
             .onAppear(perform: {
                 viewModel.loadImageAttributes(imageAttributes)
@@ -217,14 +218,11 @@ struct ImageMoveAndScaleSheet: View {
     ///
     /// - Parameter rect: a CGRect filling the device screen.
     ///
-    ///Code for mask obtained from [StackOVerflow](https://stackoverflow.com/questions/59656117/swiftui-add-inverted-mask)
     func HoleShapeMask(proxy: GeometryProxy) -> Path {
-        let totalWidth = proxy.size.width + proxy.safeAreaInsets.leading + proxy.safeAreaInsets.trailing
-        let totalHeight = proxy.size.height + proxy.safeAreaInsets.top + proxy.safeAreaInsets.bottom
-        let insetHDiff = proxy.safeAreaInsets.leading - proxy.safeAreaInsets.trailing
-        let insetVDiff = proxy.safeAreaInsets.top - proxy.safeAreaInsets.bottom
+        let totalWidth = proxy.size.width //+ proxy.safeAreaInsets.leading + proxy.safeAreaInsets.trailing
+        let totalHeight = proxy.size.height //+ proxy.safeAreaInsets.top + proxy.safeAreaInsets.bottom
         let rect = CGRect(x: 0, y: 0, width: totalWidth, height: totalHeight)
-        let insetRect = CGRect(x: inset + insetHDiff, y: inset + insetVDiff, width: totalWidth - ( inset * 2 ) - insetHDiff, height: totalHeight - ( inset * 2 ) - insetVDiff)
+        let insetRect = CGRect(x: inset, y: inset, width: totalWidth - ( inset * 2 ), height: totalHeight - ( inset * 2 ))
         var shape = Rectangle().path(in: rect)
         shape.addPath(Circle().path(in: insetRect))
         return shape
