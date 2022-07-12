@@ -66,10 +66,10 @@ struct ImageMoveAndScaleSheet: View {
     @State var defaultImageSide = 0.0
     
     //Localized strings
-    let moveAndScale = NSLocalizedString("Move and Scale", comment: "indicate that the user may use gestures to move and or scale the image")
-    let selectPhoto = NSLocalizedString("Select a photo by tapping the green icon below", comment: "indicate that the user may select a photo by tapping on the green icon")
-    let cancelSheet = NSLocalizedString("Cancel", comment: "indicate that the user cancel the action, closing the sheet")
-    let usePhoto = NSLocalizedString("Use photo", comment: "indicate that the user may use the photo as currently displayed")
+    let moveAndScale = NSLocalizedString("Move and Scale", bundle: Bundle.module, comment: "indicate that the user may use gestures to move and or scale the image")
+    let selectPhoto = NSLocalizedString("Select a photo by tapping the green icon below", bundle: Bundle.module, comment: "indicate that the user may select a photo by tapping on the green icon")
+    let cancelSheet = NSLocalizedString("Cancel", bundle: Bundle.module, comment: "indicate that the user cancel the action, closing the sheet")
+    let usePhoto = NSLocalizedString("Use photo", bundle: Bundle.module, comment: "indicate that the user may use the photo as currently displayed")
     
     var body: some View {
         GeometryReader { geometry in

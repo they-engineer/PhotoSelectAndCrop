@@ -15,8 +15,8 @@ public struct ImagePane: View {
     
     @Binding var isEditMode: Bool
     
-    @State private var addPhotoButtonLabel = NSLocalizedString("Add photo", comment: "indicate that a photo is not available and one should be added")
-    @State private var changePhotoButtonLabel = NSLocalizedString("Change photo", comment: "indicate that a photo is available and may be changed to another")
+    @State private var addPhotoButtonLabel = NSLocalizedString("Add photo", bundle: Bundle.module, comment: "indicate that a photo is not available and one should be added")
+    @State private var changePhotoButtonLabel = NSLocalizedString("Change photo", bundle: Bundle.module, comment: "indicate that a photo is available and may be changed to another")
     
     var renderingMode: SymbolRenderingMode = .monochrome
     var colors: [Color] = []
