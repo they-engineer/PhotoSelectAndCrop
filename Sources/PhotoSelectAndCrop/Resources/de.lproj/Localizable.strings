@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  PhotoSelectAndCrop
+
+  Created by Tetyana Dzyuba on 07/11/2022
+  
+*/
+
+"Select a photo by tapping the green icon below" = "Wählen Sie ein Foto aus, indem Sie auf das grüne Symbol unten tippen";
+"Change photo" = "Foto ändern";
+"Add photo" = "Foto hinzufügen";
+"Cancel" = "Abrechnen";
+"Move and Scale" = "Bewegen und skalieren";
+"Use photo" = "Foto verwenden";
+"Edit" = "Bearbeiten";
+"Save" = "Speichern";
