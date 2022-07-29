@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  PhotoSelectAndCrop
+
+  Created by Tetyana Dzyuba on 07/11/2022
+  
+*/
+
+"Select a photo by tapping the green icon below" = "Виберіть фотографію, натиснувши на зелений значок нижче";
+"Change photo" = "Змінити фото";
+"Add photo" = "Додати фото";
+"Cancel" = "Відміна";
+"Move and Scale" = "Масштабування";
+"Use photo" = "Готово";
+"Edit" = "Правити";
+"Save" = "OK";
