@@ -4,7 +4,7 @@
 //
 //  Created by Dave Kondris on 18/11/21.
 //
-
+#if os(iOS)
 import SwiftUI
 
 
@@ -192,3 +192,4 @@ extension ImageMoveAndScaleSheet {
         imageAttributes.yHeight = currentPosition.height
     }
 }
+#endif

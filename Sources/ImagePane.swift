@@ -4,7 +4,7 @@
 //
 //  Created by Dave Kondris on 18/11/21.
 //
-
+#if os(iOS)
 import SwiftUI
 
 public struct ImagePane: View {
@@ -131,3 +131,4 @@ struct ImagePane_Previews: PreviewProvider {
             .background(.black)
     }
 }
+#endif

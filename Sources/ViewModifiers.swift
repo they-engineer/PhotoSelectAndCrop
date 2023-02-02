@@ -4,7 +4,7 @@
 //
 //  Created by Dave Kondris on 28/11/21.
 //
-
+#if os(iOS)
 import SwiftUI
 
 struct RenderingForegroundStyle: ViewModifier {
@@ -27,3 +27,4 @@ struct RenderingForegroundStyle: ViewModifier {
         }
     }
 }
+#endif

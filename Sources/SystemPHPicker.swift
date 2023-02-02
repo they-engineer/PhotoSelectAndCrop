@@ -4,6 +4,7 @@
 //
 //  Created by Dave Kondris on 22/01/21.
 //
+#if os(iOS)
 import PhotosUI
 import SwiftUI
 
@@ -67,3 +68,4 @@ public struct SystemPHPicker: UIViewControllerRepresentable {
         }
     }
 }
+#endif

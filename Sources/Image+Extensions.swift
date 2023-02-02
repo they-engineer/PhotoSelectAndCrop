@@ -4,7 +4,7 @@
 //
 //  Created by Dave Kondris on 04/03/21.
 //
-
+#if os(iOS)
 import SwiftUI
 
 
@@ -19,3 +19,4 @@ extension Image {
             .foregroundColor(.gray)
     }
 }
+#endif

@@ -4,7 +4,7 @@
 //
 //  Created by Dave Kondris on 22/11/21.
 //
-
+#if os(iOS)
 import SwiftUI
 
 extension ImageMoveAndScaleSheet {
@@ -44,3 +44,4 @@ extension ImageMoveAndScaleSheet {
         }
     }
 }
+#endif

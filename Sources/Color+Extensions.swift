@@ -5,6 +5,7 @@
 //  Created by Dave Kondris on 30/05/21.
 //
 ///
+#if os(iOS)
 import SwiftUI
 
 public extension Color {
@@ -125,3 +126,4 @@ public extension Color {
         return Color(UIColor.systemGray6)
     }
 }
+#endif

@@ -4,7 +4,7 @@
 //
 //  Created by Dave Kondris on 03/01/21.
 //
-
+#if os(iOS)
 import SwiftUI
 
 struct ImageMoveAndScaleSheet: View {
@@ -255,3 +255,4 @@ struct ImageMoveAndScaleSheet_Previews: PreviewProvider {
         )
     }
 }
+#endif

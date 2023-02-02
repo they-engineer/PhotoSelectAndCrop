@@ -5,6 +5,7 @@
 //  Created by Dave Kondris on 03/01/21.
 //
 
+#if os(iOS)
 import UIKit
 
 ///A class that enables determining if the user's device is in landscape or portrait position.
@@ -36,3 +37,5 @@ final class DeviceOrientation: ObservableObject {
             .assign(to: &$orientation)
     }
 }
+
+#endif

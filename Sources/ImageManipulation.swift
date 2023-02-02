@@ -5,6 +5,8 @@
 //  Created by Dave Kondris on 03/01/21.
 //
 
+#if os(iOS)
+
 import UIKit
 
 /// Crops a UIImage
@@ -28,3 +30,5 @@ func croppedImage(from image: UIImage, croppedTo rect: CGRect) -> UIImage {
     UIGraphicsEndImageContext()
     return subImage!
 }
+
+#endif

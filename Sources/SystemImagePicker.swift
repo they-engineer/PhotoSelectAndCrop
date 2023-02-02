@@ -4,7 +4,7 @@
 //
 //  Created by Dave Kondris on 03/01/21.
 //
-
+#if os(iOS)
 import SwiftUI
 
 ///A struct Code from Hacking With Swift:
@@ -46,3 +46,4 @@ public struct SystemUIImagePicker: UIViewControllerRepresentable {
 
     }
 }
+#endif

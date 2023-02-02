@@ -4,7 +4,7 @@
 //
 //  Created by Dave Kondris on 26/02/21.
 //
-
+#if os(iOS)
 import SwiftUI
 
 ///A collection of attributes used to position an image in the ImageMoveAndScaleSheet at a determined scale and offset as well as a cropped image representing the same.
@@ -66,3 +66,4 @@ public class ImageAttributes: ObservableObject {
     }
 }
 
+#endif
