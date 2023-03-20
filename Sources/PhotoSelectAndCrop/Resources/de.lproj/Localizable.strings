@@ -1,16 +1,18 @@
-/* 
-  Localizable.strings
-  PhotoSelectAndCrop
-
-  Created by Tetyana Dzyuba on 07/11/2022
-  
-*/
-
-"Select a photo by tapping the green icon below" = "Wählen Sie ein Foto aus, indem Sie auf das grüne Symbol unten tippen";
-"Change photo" = "Foto ändern";
+/* indicate that a photo is not available and one should be added */
 "Add photo" = "Foto hinzufügen";
+
+/* indicate that the user cancel the action, closing the sheet */
 "Cancel" = "Abrechnen";
+
+/* indicate that a photo is available and may be changed to another */
+"Change photo" = "Foto ändern";
+
+/* indicate that the user may use gestures to move and or scale the image */
 "Move and Scale" = "Verschieben und skalieren";
+
+/* indicate that the user may select a photo by tapping on the green icon */
+"Select a photo by tapping the green icon below" = "Wählen Sie ein Foto aus, indem Sie auf das grüne Symbol unten tippen";
+
+/* indicate that the user may use the photo as currently displayed */
 "Use photo" = "Foto verwenden";
-"Edit" = "Bearbeiten";
-"Save" = "Speichern";
+
